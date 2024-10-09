@@ -1,7 +1,15 @@
 import { OrbitControls } from '@react-three/drei'
-import Cube from './Components/Cube'
+//npm i leva > import useConrols helper from leva
+import { useControls } from 'leva'
+
 
 export default function Experience() {
+    //how to use useControls helper
+    const controls = useControls({
+        position: -2 //tweak position
+    })
+
+
     return <>
 
         <OrbitControls makeDefault />
@@ -13,9 +21,6 @@ export default function Experience() {
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
         </mesh>
-
-        {/* React Browser Extension debuger added on chrome and test it with a cube class */}
-        <Cube scale={2} />
 
         <mesh position-x={2} scale={1.5}>
             <boxGeometry />
