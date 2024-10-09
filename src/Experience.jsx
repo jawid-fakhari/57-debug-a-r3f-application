@@ -4,9 +4,14 @@ import { useControls } from 'leva'
 
 
 export default function Experience() {
-    //how to use useControls helper
-    const controls = useControls({
-        position: -2 //tweak position
+    //how to use useControls helper, 
+    const { position } = useControls({
+        position: { //tweak x position
+            value: { x: -2, y: 1, z: 0 },
+            min: -4,
+            max: 4,
+            step: 0.01
+        }
     })
 
 
@@ -17,7 +22,7 @@ export default function Experience() {
         <directionalLight position={[1, 2, 3]} intensity={4.5} />
         <ambientLight intensity={1.5} />
 
-        <mesh position-x={- 2}>
+        <mesh position={[position.x, position.y, position.z]}>
             <sphereGeometry />
             <meshStandardMaterial color="orange" />
         </mesh>
