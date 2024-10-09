@@ -5,13 +5,14 @@ import { useControls } from 'leva'
 
 export default function Experience() {
     //how to use useControls helper, 
-    const { position } = useControls({
+    const { position, color } = useControls({
         position: { //tweak x position
             value: { x: -2, y: 1, z: 0 },
             min: -4,
             max: 4,
             step: 0.01
-        }
+        },
+        color: '#ff0000'
     })
 
 
@@ -24,7 +25,7 @@ export default function Experience() {
 
         <mesh position={[position.x, position.y, position.z]}>
             <sphereGeometry />
-            <meshStandardMaterial color="orange" />
+            <meshStandardMaterial color={color} />
         </mesh>
 
         <mesh position-x={2} scale={1.5}>
