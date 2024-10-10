@@ -1,9 +1,15 @@
 import { OrbitControls } from '@react-three/drei'
 //npm i leva > import useConrols helper from leva
 import { button, useControls } from 'leva'
+//npm install r3f-perf > import Perf
+import { Perf } from 'r3f-perf';//Monitorare il performance di gpu, cpu, ecc "live"
 
 
 export default function Experience() {
+    const { prefVisible } = useControls({
+        prefVisible: false
+    })
+
     //how to use useControls helper, 
     const { position, color, visible } = useControls('sphere', { //Folder 'sphere'
         position: { //tweak x position
@@ -36,6 +42,7 @@ export default function Experience() {
 
 
     return <>
+        {prefVisible ? <Perf position="top-left" visible={prefVisible} /> : null}
 
         <OrbitControls makeDefault />
 
