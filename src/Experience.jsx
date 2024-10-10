@@ -5,7 +5,7 @@ import { button, useControls } from 'leva'
 
 export default function Experience() {
     //how to use useControls helper, 
-    const { position, color, visible } = useControls({
+    const { position, color, visible } = useControls('sphere', { //Folder 'sphere'
         position: { //tweak x position
             value: { x: -2, y: 0 },
             joystick: 'invertY',
@@ -25,6 +25,15 @@ export default function Experience() {
         chioice: { options: ['a', 'b', 'c'] }, //tweak di selection con le ozioni
     })
 
+    const { scale } = useControls('cube', { //Folder 'cube'
+        scale: {
+            value: 1.5,
+            step: 0.01,
+            min: 0,
+            max: 5
+        }
+    })
+
 
     return <>
 
@@ -38,7 +47,7 @@ export default function Experience() {
             <meshStandardMaterial color={color} />
         </mesh>
 
-        <mesh position-x={2} scale={1.5}>
+        <mesh position-x={2} scale={scale}>
             <boxGeometry />
             <meshStandardMaterial color="mediumpurple" />
         </mesh>
