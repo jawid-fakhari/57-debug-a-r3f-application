@@ -1,6 +1,6 @@
 import { OrbitControls } from '@react-three/drei'
 //npm i leva > import useConrols helper from leva
-import { useControls } from 'leva'
+import { button, useControls } from 'leva'
 
 
 export default function Experience() {
@@ -8,13 +8,20 @@ export default function Experience() {
     const { position, color, visible } = useControls({
         position: { //tweak x position
             value: { x: -2, y: 0 },
-            min: -4,
-            max: 4,
             joystick: 'invertY',
             step: 0.01
         },
         color: '#ff0000',
-        visible: true //tweak di visibilità
+        visible: true, //tweak di visibilità
+        myInterval: //tweak di Intervallo se c'è bisgno di un range 
+        {
+            min: 0,
+            max: 10,
+            value: [4, 5]
+        },
+        clickme: button(() => { //tweak di un button, import button funcion
+            console.log('clicked');
+        })
     })
 
 
@@ -25,12 +32,12 @@ export default function Experience() {
         <directionalLight position={[1, 2, 3]} intensity={4.5} />
         <ambientLight intensity={1.5} />
 
-        <mesh position={[position.x, position.y, 0]}>
+        <mesh position={[position.x, position.y, 0]} visible={visible} >
             <sphereGeometry />
             <meshStandardMaterial color={color} />
         </mesh>
 
-        <mesh position-x={2} scale={1.5} visible={visible}>
+        <mesh position-x={2} scale={1.5}>
             <boxGeometry />
             <meshStandardMaterial color="mediumpurple" />
         </mesh>
