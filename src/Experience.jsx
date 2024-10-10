@@ -21,7 +21,8 @@ export default function Experience() {
         },
         clickme: button(() => { //tweak di un button, import button funcion
             console.log('clicked');
-        })
+        }),
+        chioice: { options: ['a', 'b', 'c'] }, //tweak di selection con le ozioni
     })
 
 
