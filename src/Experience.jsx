@@ -5,14 +5,15 @@ import { useControls } from 'leva'
 
 export default function Experience() {
     //how to use useControls helper, 
-    const { position, color } = useControls({
+    const { position, color, visible } = useControls({
         position: { //tweak x position
             value: { x: -2, y: 1, z: 0 },
             min: -4,
             max: 4,
             step: 0.01
         },
-        color: '#ff0000'
+        color: '#ff0000',
+        visible: true //tweak di visibilità
     })
 
 
@@ -28,7 +29,7 @@ export default function Experience() {
             <meshStandardMaterial color={color} />
         </mesh>
 
-        <mesh position-x={2} scale={1.5}>
+        <mesh position-x={2} scale={1.5} visible={visible}>
             <boxGeometry />
             <meshStandardMaterial color="mediumpurple" />
         </mesh>
